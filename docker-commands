@@ -1,0 +1,50 @@
+//restart the docker containers
+sudo systemctl restart docker.socket docker.service
+
+
+//delete container 
+docker rm -f <container id>
+
+//stop container 
+docker stop container
+
+//stop all containers
+docker stop $(docker ps -a -q)
+
+//remove all images at once
+docker rmi --force  $(docker images -q)
+
+//remove a specific image
+docker image rm 3a5e53f63281 -f
+
+//find what is running on a specific port 
+sudo lsof -i TCP:3306
+//it will show the pid
+
+//kill that by running 
+kill <PID>
+
+
+//docker running command
+docker-compose --env-file "./config/.env.development" up -d
+
+
+//necx logs command 
+docker logs -f necx_backend
+
+//necx Dockerfile.development file changes
+FROM node:14.15.0
+
+WORKDIR /app
+RUN npm config set unsafe-perm true
+COPY package.json .
+COPY . .
+RUN npm install
+
+# Change ownership of /app/dist as root
+USER root
+RUN chown -R node /app/dist
+USER node
+
+EXPOSE 5000
+CMD ["npm", "run", "dev"]
