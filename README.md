@@ -1,8 +1,17 @@
-#------------------------------------------------------
-#This code generates a docker container consisiting pgadmin for accessing postgres databases
-#need to run -----> "docker compose up -d" 
+# Project Title
 
-##----------------Required Systems to have--------------------------------------------##
-#Docker 
-#Docker Desktop (for windows only)
+A brief description of what this project does and who it's for
+
+## Required Systems to have 
+
+- Docker
+- Docker Desktop (for windows only)
+
+#### To start the container run 
+
+```http
+  docker compose up -d
+```
+
+
 
